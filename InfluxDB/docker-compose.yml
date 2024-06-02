@@ -6,6 +6,14 @@ services:
     ports:
       - "8086:8086"
     volumes:
-      - /PATH/TO/LOCATION:/var/lib/influxdb2
-      - /PATH/TO/LOCATION:/etc/influxdb2
+      - /home/mrp/docker/monitoring/influxdb/data:/var/lib/influxdb2
+      - /home/mrp/docker/monitoring/influxdb/config:/etc/influxdb2
     restart: always
+
+    #optional ------
+    networks: 
+      - galaxy
+networks:
+  galaxy:
+    driver: bridge
+    # --------------
