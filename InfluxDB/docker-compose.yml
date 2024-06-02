@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  influxdb:
+    image: influxdb
+    container_name: Monitor-InfluxDB
+    ports:
+      - "8086:8086"
+    volumes:
+      - /PATH/TO/LOCATION:/var/lib/influxdb2
+      - /PATH/TO/LOCATION:/etc/influxdb2
+    restart: always
