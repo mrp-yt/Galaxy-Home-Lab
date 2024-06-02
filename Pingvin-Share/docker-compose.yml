@@ -10,10 +10,10 @@ services:
     ports:
       - "3535:3000"
     volumes:
-      - "/PATH/TO/LOCATION:/opt/app/backend/data"
-      - "/PATH/TO/LOCATION:/opt/app/backend/data/uploads"
-      - "/PATH/TO/LOCATION:/opt/app/frontend/public/img"
-    networks:
+      - "/home/mrp/docker/pingvin:/opt/app/backend/data"
+      - "/home/mrp/nas/docker-stuff/pingvin:/opt/app/backend/data/uploads"
+      - "/home/mrp/docker/pingvin/images:/opt/app/frontend/public/img"
+    networks: #optional
       - galaxy
       
 ###########################################      
@@ -22,3 +22,9 @@ services:
     restart: unless-stopped
     image: clamav/clamav
     container_name: clamav
+    networks: #optional
+      - galaxy
+
+networks: #optional
+  galaxy:  # Updated to correct network name
+    driver: bridge
