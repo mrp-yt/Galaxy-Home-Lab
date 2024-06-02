@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  grafana:
+    image: grafana/grafana:latest
+    container_name: Monitor-Grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - /PATH/TO/LOCATION:/var/lib/grafana
+    user: "1000:1000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    restart: always
+    networks:
+      - galaxy
+networks:
+  galaxy:
+    driver: bridge
