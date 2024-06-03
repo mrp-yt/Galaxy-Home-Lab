@@ -6,9 +6,3 @@ services:
       - 8085:80
     restart: always
     container_name: it-tools
-    networks:
-      - galaxy
-
-networks:
-  galaxy:  # Updated to correct network name
-    driver: bridge
