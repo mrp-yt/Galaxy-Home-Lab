@@ -26,5 +26,5 @@ services:
       - galaxy
 
 networks: #optional
-  galaxy:  # Updated to correct network name
+  galaxy:  
     driver: bridge
