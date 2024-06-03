@@ -6,7 +6,9 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - /PATH/TO/LOCATION:/var/lib/grafana
+    # Configure bellow to match your setup
+    # - /path/to/location:/var/lib/grafana
+      - /home/mrp/docker/monitoring/grafana:/var/lib/grafana 
     user: "1000:1000"
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=admin
