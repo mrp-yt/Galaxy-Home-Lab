@@ -6,5 +6,5 @@ services:
       - $DATA:/app/data
     ports:
       # <Host Port>:<Container Port>
-      - 3331:3001
+      - 3113:3001
     restart: unless-stopped
