@@ -6,8 +6,8 @@ services:
     ports:
       - "8086:8086"
     volumes:
-      - /home/mrp/docker/monitoring/influxdb/data:/var/lib/influxdb2
-      - /home/mrp/docker/monitoring/influxdb/config:/etc/influxdb2
+      - $DATA:/var/lib/influxdb2
+      - $CONFIG:/etc/influxdb2
     restart: always
 
     #optional ------
