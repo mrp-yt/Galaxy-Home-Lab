@@ -1,0 +1,21 @@
+version: "2.1"
+services:
+  prusaslicer-novnc:
+    image: mikeah/prusaslicer-novnc
+    container_name: Prusa-Slicer-novnc
+    environment:
+      - SSL_CERT_FILE="/etc/ssl/certs/ca-certificates.crt"
+      #- NVIDIA_DRIVER_CAPABILITIES="all"
+      #- NVIDIA_VISIBLE_DEVICES="all"
+    volumes:
+      - /home/mrp/nas/docker-stuff/prusa-prints:/prints/
+      - /home/mrp/docker/prusa-slicer:/configs/
+    ports:
+      - 8787:8080
+    restart: unless-stopped
+    networks:
+      - galaxy
+
+networks:
+  galaxy:  # Updated to correct network name
+    driver: bridge
