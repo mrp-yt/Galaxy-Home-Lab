@@ -7,21 +7,19 @@ services:
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/London # Update your Tize Zone
+      - TZ=Europe/London
     volumes:
-      - /PATH/TO/LOCATION:/config
-      - /PATH/TO/LOCATION:/nas
+      - /home/mrp/docker/syncthing:/config
+      - /home/mrp/nas:/nas
     ports:
       - 8384:8384
       - 22000:22000/tcp
       - 22000:22000/udp
       - 21027:21027/udp
     restart: unless-stopped
-    # optional ------------------------------------
     networks:
       - galaxy
 
 networks:
-  galaxy:  
+  galaxy:  # Updated to correct network name
     driver: bridge
-    # optional ------------------------------------
