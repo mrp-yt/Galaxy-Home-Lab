@@ -13,8 +13,8 @@ services:
       - $DATA:/opt/app/backend/data
       - $UPLOADS:/opt/app/backend/data/uploads
       - $IMAGES:/opt/app/frontend/public/img
-    networks: #optional
-      - galaxy
+#    networks: #optional
+#      - galaxy
       
 ###########################################      
 
@@ -22,9 +22,9 @@ services:
     restart: unless-stopped
     image: clamav/clamav
     container_name: $CLAMAV
-    networks: #optional
-      - galaxy
+#    networks: #optional
+#      - galaxy
 
-networks: #optional
-  galaxy:  
-    driver: bridge
+#networks: #optional
+#  galaxy:  
+#    driver: bridge
