@@ -1,0 +1,32 @@
+version: "2.1"
+services:
+  changedetection:
+    image: lscr.io/linuxserver/changedetection.io:latest
+    container_name: change-detector
+    hostname: changedetector.lan
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - /home/mrp/docker/change-detector/config:/config
+    ports:
+      - 5000:5000
+    restart: unless-stopped
+    networks:
+      - galaxy
+      
+########################
+  browser-chrome:
+    hostname: browser-chrome
+    container_name: chrome-browser
+    image: seleniarm/standalone-chromium:latest
+    volumes:
+      - /dev/shm:/dev/shm
+    restart: unless-stopped
+    networks:
+      - galaxy
+
+networks:
+  galaxy:  # Updated to correct network name
+    driver: bridge
