@@ -1,0 +1,25 @@
+version: '3.9'  
+services:
+  filezilla:
+    image: lscr.io/linuxserver/filezilla:latest
+    container_name: filezilla
+    security_opt:
+      - seccomp:unconfined
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - /home/mrp/docker/filezilla:/config
+      - /home/mrp/nas:/NAS
+      - /home/mrp/Synology:/SYNOLOGY
+    ports:
+      - 3300:3000
+      - 3301:3001
+    restart: unless-stopped
+    networks:
+      - galaxy
+networks:
+  galaxy:  
+    driver: bridge
+    
