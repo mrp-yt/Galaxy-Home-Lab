@@ -11,7 +11,7 @@ services:
       - "$HOST_PORT:3000"
     volumes:
       - $DATA:/opt/app/backend/data
-      - $UPLODS:/opt/app/backend/data/uploads
+      - $UPLOADS:/opt/app/backend/data/uploads
       - $IMAGES:/opt/app/frontend/public/img
     networks: #optional
       - galaxy
