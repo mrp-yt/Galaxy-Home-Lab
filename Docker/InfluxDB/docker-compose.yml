@@ -9,10 +9,3 @@ services:
       - $DATA:/var/lib/influxdb2
       - $CONFIG:/etc/influxdb2
     restart: always
-
-#    networks: 
-#      - galaxy
-#networks:
-#  galaxy:
-#    driver: bridge
-#    # --------------
