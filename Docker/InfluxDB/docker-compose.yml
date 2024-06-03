@@ -4,16 +4,8 @@ services:
     image: influxdb
     container_name: Monitor-InfluxDB
     ports:
-      - "8086:8086"
+      - $HOST_PORT:8086
     volumes:
       - $DATA:/var/lib/influxdb2
       - $CONFIG:/etc/influxdb2
     restart: always
-
-    #optional ------
-    networks: 
-      - galaxy
-networks:
-  galaxy:
-    driver: bridge
-    # --------------
