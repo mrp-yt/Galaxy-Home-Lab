@@ -3,7 +3,7 @@ services:
   uptime-kuma:
     image: louislam/uptime-kuma
     volumes:
-      - /home/mrp/docker/uptime-kuma:/app/data
+      - $DATA:/app/data
     ports:
-      - 3113:3001
+      - $HOST_PORT:3001
     restart: unless-stopped
