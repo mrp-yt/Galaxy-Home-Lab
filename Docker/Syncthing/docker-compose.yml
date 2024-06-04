@@ -2,15 +2,15 @@ version: "3"
 services:
   syncthing:
     image: lscr.io/linuxserver/syncthing:latest
-    container_name: syncthing
+    container_name: $NAME
     hostname: syncthing #optional
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=$TZ
     volumes:
-      - /home/mrp/docker/syncthing:/config
-      - /home/mrp/nas:/nas
+      - $CONFIG:/config
+      - $DATA:$DATA2
     ports:
       - 8384:8384
       - 22000:22000/tcp
