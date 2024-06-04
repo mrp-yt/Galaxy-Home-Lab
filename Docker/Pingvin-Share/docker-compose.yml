@@ -6,14 +6,14 @@ services:
         condition: service_healthy
     image: stonith404/pingvin-share
     restart: unless-stopped
-    container_name: $PINGVIN
+    container_name: Pingvin-Share
     ports:
-      - "$HOST_PORT:3000"
+      - "3535:3000"
     volumes:
-      - $DATA:/opt/app/backend/data
-      - $UPLOADS:/opt/app/backend/data/uploads
-      - $IMAGES:/opt/app/frontend/public/img
+      - /home/mrp/docker/pingvin:/opt/app/backend/data
+      - /home/mrp/nas/docker-stuff/pingvin:/opt/app/backend/data/uploads
+      - /home/mrp/docker/pingvin/images:/opt/app/frontend/public/img
   clamav:
     restart: unless-stopped
     image: clamav/clamav
-    container_name: $CLAMAV
+    container_name: ClamAV

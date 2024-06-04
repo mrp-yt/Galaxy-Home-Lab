@@ -7,7 +7,7 @@ services:
     ports:
       - 8180:80
     volumes:
-      - $DATA:/app/data
+      - /home/mrp/docker/gotify:/app/data
 
     # optional --------------------------
     networks:

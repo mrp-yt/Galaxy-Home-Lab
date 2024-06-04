@@ -13,8 +13,8 @@ services:
     ports:
       - 5000:5000
     restart: unless-stopped
-    networks:
-      - galaxy
+#    networks:
+#      - galaxy
       
 ########################
   browser-chrome:
@@ -24,9 +24,9 @@ services:
     volumes:
       - /dev/shm:/dev/shm
     restart: unless-stopped
-    networks:
-      - galaxy
+#    networks:
+#      - galaxy
 
-networks:
-  galaxy:  # Updated to correct network name
-    driver: bridge
+#networks:
+#  galaxy:  # Updated to correct network name
+#    driver: bridge

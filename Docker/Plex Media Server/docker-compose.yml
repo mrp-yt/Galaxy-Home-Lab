@@ -1,0 +1,16 @@
+version: "2.1"
+services:
+  plex:
+    image: lscr.io/linuxserver/plex:latest
+    container_name: plex
+    network_mode: host
+    hostname: PLEX
+    environment:
+      - PUID=0
+      - PGID=0
+      - TZ=Europe/London
+      - VERSION=docker
+    volumes:
+      - /home/mrp/docker/pms-config:/config
+      - /home/mrp/nas/pms:/NAS
+    restart: unless-stopped

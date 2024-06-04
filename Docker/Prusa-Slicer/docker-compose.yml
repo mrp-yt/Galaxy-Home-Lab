@@ -11,11 +11,11 @@ services:
       - /home/mrp/nas/docker-stuff/prusa-prints:/prints/
       - /home/mrp/docker/prusa-slicer:/configs/
     ports:
-      - $HOST_PORT:8080
+      - 8787:8080
     restart: unless-stopped
-    networks:
-      - galaxy
+#    networks:
+#      - galaxy
 
-networks:
-  galaxy:  # Updated to correct network name
-    driver: bridge
+#networks:
+#  galaxy:  # Updated to correct network name
+#    driver: bridge

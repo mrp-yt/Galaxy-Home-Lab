@@ -4,9 +4,9 @@ services:
     image: grafana/grafana:latest
     container_name: Monitor-Grafana
     ports:
-      - $HOST_PORT:3000
+      - 3000:3000
     volumes:
-      - $DATA:/var/lib/grafana 
+      - /home/mrp/docker/monitoring/grafana:/var/lib/grafana 
     user: "1000:1000"
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=admin
