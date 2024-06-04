@@ -1,0 +1,16 @@
+version: "3.3"
+services:
+  watchtower:
+    image: containrrr/watchtower
+    container_name: WatchTower
+    hostname: watchtower
+    environment:
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_NOTIFICATIONS=gotify
+      - WATCHTOWER_NOTIFICATION_GOTIFY_URL=$URL
+      - WATCHTOWER_NOTIFICATION_GOTIFY_TOKEN=$TOKEN
+      - WATCHTOWER_NOTIFICATION_GOTIFY_TLS_SKIP_VERIFY=true
+      - WATCHTOWER_POLL_INTERVAL=3600
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
