@@ -2,17 +2,17 @@ version: '3.9'
 services:
   filezilla:
     image: lscr.io/linuxserver/filezilla:latest
-    container_name: filezilla
+    container_name: $NAME
     security_opt:
       - seccomp:unconfined
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/London
+      - TZ=$TZ
     volumes:
-      - /home/mrp/docker/filezilla:/config
-      - /home/mrp/nas:/NAS
-      - /home/mrp/Synology:/SYNOLOGY
+      - $CONFIG:/config
+      - $LOCATION:/NAS
+      - $LOCATION2:/SYNOLOGY
     ports:
       - 3300:3000
       - 3301:3001
