@@ -13,6 +13,8 @@ services:
       WORDPRESS_DB_NAME: $WORDPRESS_DB_NAME
     volumes:
       - $DATA:/var/www/html
+    depends_on:
+      - db
 
   db:
     image: mariadb:latest
