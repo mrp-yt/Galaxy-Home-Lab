@@ -2,21 +2,14 @@ version: "2.1"
 services:
   remmina:
     image: lscr.io/linuxserver/remmina:latest
-    container_name: remmina
+    container_name: Remmina
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/London
+      - TZ=$TZ
     volumes:
-      - /home/mrp/docker/remmina:/config
+      - $REMMINA_DATA:/config
     ports:
-      - 3002:3000
-      - 3001:3001
+      - $REMMINA_PORT_1:3000
+      - $REMMINA_PORT_2:3001
     restart: unless-stopped
-#     networks:
-#       - galaxy
-
-# networks:
-#   galaxy:  # Updated to correct network name
-#     driver: bridge
-    
