@@ -28,3 +28,13 @@ services:
       MYSQL_ROOT_PASSWORD: $ROOT_PASSWORD
     volumes:
       - $DB_DATA:/var/lib/mysql
+
+# -- Enviroments -- #
+#
+# WORDPRESS_DB_USER=
+# WORDPRESS_DB_PASSWORD=
+# WORDPRESS_DB_NAME=
+# ROOT_PASSWORD=
+# DATA=
+# DB_DATA=
+# HOST_PORT=
