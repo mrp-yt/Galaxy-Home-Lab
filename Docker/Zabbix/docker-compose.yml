@@ -15,10 +15,6 @@ services:
 # optional --------------------------
     networks:
       - galaxy
-networks:
-  galaxy:  
-    driver: bridge
-# -------------------------------------
   zabbix:
     image: zabbix/zabbix-server-mysql:latest
     container_name: Zabbix-Server
