@@ -2,15 +2,15 @@ version: "2.1"
 services:
   plex:
     image: lscr.io/linuxserver/plex:latest
-    container_name: plex
+    container_name: Plex-Media-Server
     network_mode: host
     hostname: PLEX
     environment:
       - PUID=$PUID
       - PGID=$PGID
-      - TZ=Europe/London
+      - TZ=$TZ
       - VERSION=docker
     volumes:
-      - /home/mrp/docker/pms-config:/config
-      - /home/mrp/nas/pms:/NAS
+      - $CONFIG:/config
+      - $LOCAL_DATA:$CONTAINER_DATA
     restart: unless-stopped
