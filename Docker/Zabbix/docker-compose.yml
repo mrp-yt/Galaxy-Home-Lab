@@ -5,31 +5,45 @@ services:
     image: mysql:latest
     container_name: Zabbix-DB
     environment:
-      - MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD
-      - MYSQL_DATABASE=$MYSQL_DATABASE
-      - MYSQL_USER=$MYSQL_USER
-      - MYSQL_PASSWORD=$MYSQL_PASSWORD
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     volumes:
-      - $DB_DATA:/var/lib/mysql
+      - ${DB_DATA}:/var/lib/mysql
     restart: unless-stopped
-# optional --------------------------
-    networks:
-      - galaxy
-  zabbix:
+
+  zabbix-server:
     image: zabbix/zabbix-server-mysql:latest
     container_name: Zabbix-Server
     environment:
       - DB_SERVER_HOST=mysql-server
-      - MYSQL_USER=$MYSQL_USER
-      - MYSQL_PASSWORD=$MYSQL_PASSWORD
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     depends_on:
       - mysql-server
     init: true
     restart: unless-stopped
-# optional --------------------------
     networks:
       - galaxy
+
+  zabbix-web:
+    image: zabbix/zabbix-web-nginx-mysql:latest
+    container_name: Zabbix-Web
+    environment:
+      - DB_SERVER_HOST=mysql-server
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      - ZBX_SERVER_HOST=zabbix-server
+      - PHP_TZ=UTC
+    ports:
+      - "$HOST_PORT:8080"
+    depends_on:
+      - zabbix-server
+    restart: unless-stopped
+    networks:
+      - galaxy
+
 networks:
-  galaxy:  
+  galaxy:
     driver: bridge
-# -------------------------------------
