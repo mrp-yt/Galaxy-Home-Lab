@@ -12,6 +12,13 @@ services:
     volumes:
       - $DB_DATA:/var/lib/mysql
     restart: unless-stopped
+# optional --------------------------
+    networks:
+      - galaxy
+networks:
+  galaxy:  
+    driver: bridge
+# -------------------------------------
   zabbix:
     image: zabbix/zabbix-server-mysql:latest
     container_name: Zabbix-Server
@@ -23,10 +30,10 @@ services:
       - mysql-server
     init: true
     restart: unless-stopped
-    # optional --------------------------
+# optional --------------------------
     networks:
       - galaxy
 networks:
   galaxy:  
     driver: bridge
-    # optional --------------------------
+# -------------------------------------
