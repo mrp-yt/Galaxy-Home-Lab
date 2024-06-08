@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  mysql-server:
+    image: mysql:latest
+    container_name: Zabbix-DB
+    environment:
+      - MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD
+      - MYSQL_DATABASE=$MYSQL_DATABASE
+      - MYSQL_USER=$MYSQL_USER
+      - MYSQL_PASSWORD=$MYSQL_PASSWORD
+    volumes:
+      - $DB_DATA:/var/lib/mysql
+    restart: unless-stopped
+
+  zabbix-server-mysql:
+    image: zabbix/zabbix-server-mysql:latest
+    container_name: Zabbix-Server
+    environment:
+      - DB_SERVER_HOST=mysql-server
+      - MYSQL_USER=$MYSQL_USER
+      - MYSQL_PASSWORD=$MYSQL_PASSWORD
+    depends_on:
+      - mysql-server
+    init: true
+    restart: unless-stopped
