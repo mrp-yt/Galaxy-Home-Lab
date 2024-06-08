@@ -12,6 +12,8 @@ services:
     volumes:
       - ${DB_DATA}:/var/lib/mysql
     restart: unless-stopped
+    networks:
+      - galaxy
 
   zabbix-server:
     image: zabbix/zabbix-server-mysql:latest
