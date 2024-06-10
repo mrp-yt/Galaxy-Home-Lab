@@ -1,31 +1,82 @@
 {
-	"version": "2",
-	"templates": [
-		{
-			"category": [
-				"Tools"
-			],
-			"description": "IT-Tools - Useful tools for developer and people working in IT.",
-			"env": [
-				{
-					"label": "PGID",
-					"name": "PGID",
-					"set": "1000"
-				},
-				{
-					"label": "PUID",
-					"name": "PUID",
-					"set": "1000"
-				}
-			],
-			"image": "corentinth/it-tools:latest",
-			"logo": "https://raw.githubusercontent.com/thesugarat/portainer_templates-1/master/Images/htpcmanager-icon.png",
-			"platform": "linux",
-			"ports": [
-				"8085/tcp"
-			],
-			"title": "IT-Tools",
-			"type": 1
-		}
-	]
-}
+    "version": "2",
+    "templates": [
+      {
+        "category": [
+          "Tools"
+        ],
+        "description": "IT-Tools - Useful tools for developer and people working in IT.",
+        "env": [
+          {
+            "label": "PGID",
+            "name": "PGID",
+            "set": "1000"
+          },
+          {
+            "label": "PUID",
+            "name": "PUID",
+            "set": "1000"
+          }
+        ],
+        "image": "corentinth/it-tools:latest",
+        "logo": "https://raw.githubusercontent.com/thesugarat/portainer_templates-1/master/Images/htpcmanager-icon.png",
+        "platform": "linux",
+        "ports": [
+          "8085/tcp"
+        ],
+        "title": "IT-Tools",
+        "type": 1
+      },
+      {
+        "category": [
+          "Tools"
+        ],
+        "description": "FileZilla - A fast and reliable FTP client.",
+        "env": [
+          {
+            "label": "PUID",
+            "name": "PUID",
+            "set": "1000"
+          },
+          {
+            "label": "PGID",
+            "name": "PGID",
+            "set": "1000"
+          },
+          {
+            "label": "TZ",
+            "name": "TZ",
+            "set": "Europe/London"
+          }
+        ],
+        "image": "lscr.io/linuxserver/filezilla:latest",
+        "logo": "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/filezilla-icon.png",
+        "platform": "linux",
+        "ports": [
+          "3300:3000/tcp",
+          "3301:3001/tcp"
+        ],
+        "title": "FileZilla",
+        "type": 1,
+        "volumes": [
+          {
+            "container": "/config",
+            "bind": "/home/mrp/docker/filezilla"
+          },
+          {
+            "container": "/NAS",
+            "bind": "/home/mrp/nas"
+          },
+          {
+            "container": "/SYNOLOGY",
+            "bind": "/home/mrp/Synology"
+          }
+        ],
+        "restart_policy": "unless-stopped",
+        "networks": [
+          "galaxy"
+        ]
+      }
+    ]
+  }
+  
