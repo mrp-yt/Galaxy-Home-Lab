@@ -8,11 +8,11 @@ services:
     restart: unless-stopped
     container_name: Pingvin-Share
     ports:
-      - "3535:3000"
+      - "$HOST_PORT:3000"
     volumes:
-      - /home/mrp/docker/pingvin:/opt/app/backend/data
-      - /home/mrp/nas/docker-stuff/pingvin:/opt/app/backend/data/uploads
-      - /home/mrp/docker/pingvin/images:/opt/app/frontend/public/img
+      - $APP_DATA:/opt/app/backend/data
+      - $APP_STORAGE:/opt/app/backend/data/uploads
+      - $APP_IMAGES:/opt/app/frontend/public/img
   clamav:
     restart: unless-stopped
     image: clamav/clamav
