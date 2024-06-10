@@ -16,7 +16,7 @@
 					"label": "PUID",
 					"name": "PUID",
 					"set": "1000"
-				},
+				}
 			],
 			"image": "/it-tools:latest",
 			"logo": "https://raw.githubusercontent.com/thesugarat/portainer_templates-1/master/Images/htpcmanager-icon.png",
