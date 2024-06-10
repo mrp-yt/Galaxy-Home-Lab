@@ -61,21 +61,19 @@
         "volumes": [
           {
             "container": "/config",
-            "bind": "/home/mrp/docker/filezilla"
+            "bind": "/path/to/config"
           },
           {
-            "container": "/NAS",
-            "bind": "/home/mrp/nas"
+            "container": "/some_folder",
+            "bind": "/some/folder/name"
           },
           {
-            "container": "/SYNOLOGY",
-            "bind": "/home/mrp/Synology"
+            "container": "/some/folder2",
+            "bind": "/some/folder/name2"
           }
         ],
         "restart_policy": "unless-stopped",
-        "networks": [
-          "galaxy"
-        ]
+        
       }
     ]
   }
