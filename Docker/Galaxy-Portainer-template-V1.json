@@ -1,0 +1,101 @@
+{
+    "version": "2",
+    "templates": [
+      {
+        "type": "docker-compose",
+        "title": "Wordpress Website",
+        "description": "A simple Wordpress website with a MariaDB database",
+        "note": "Ensure to set the environment variables accordingly.",
+        "categories": ["CMS", "Blogging"],
+        "platform": "linux",
+        "logo": "https://www.portainer.io/wp-content/uploads/2020/10/portainer-logo.png",
+        "repository": {
+          "url": "https://github.com/your-repo/your-template-repo",
+          "stackfile": "wordpress-stack.yml"
+        },
+        "env": [
+          {
+            "name": "WORDPRESS_HOST_PORT",
+            "label": "Wordpress Host Port",
+            "description": "The port on the host to access Wordpress",
+            "default": "8080"
+          },
+          {
+            "name": "WORDPRESS_DB_USER",
+            "label": "Wordpress Database User",
+            "description": "The username for the Wordpress database",
+            "default": "wordpressuser"
+          },
+          {
+            "name": "WORDPRESS_DB_PASSWORD",
+            "label": "Wordpress Database Password",
+            "description": "The password for the Wordpress database",
+            "default": "wordpresspassword"
+          },
+          {
+            "name": "WORDPRESS_DB_NAME",
+            "label": "Wordpress Database Name",
+            "description": "The name of the Wordpress database",
+            "default": "wordpress"
+          },
+          {
+            "name": "WORDPRESS_DATA",
+            "label": "Wordpress Data Volume",
+            "description": "The volume for Wordpress data",
+            "default": "/path/to/wordpress/data"
+          },
+          {
+            "name": "DB_DATA",
+            "label": "Database Data Volume",
+            "description": "The volume for MariaDB data",
+            "default": "/path/to/db/data"
+          },
+          {
+            "name": "MYSQL_ROOT_PASSWORD",
+            "label": "MySQL Root Password",
+            "description": "The root password for MariaDB",
+            "default": "rootpassword"
+          }
+        ],
+        "stack": {
+          "services": {
+            "wordpress": {
+              "image": "wordpress:latest",
+              "container_name": "Wordpress_Website",
+              "restart": "always",
+              "ports": [
+                "$WORDPRESS_HOST_PORT:80"
+              ],
+              "environment": [
+                "WORDPRESS_DB_HOST=db:3306",
+                "WORDPRESS_DB_USER=$WORDPRESS_DB_USER",
+                "WORDPRESS_DB_PASSWORD=$WORDPRESS_DB_PASSWORD",
+                "WORDPRESS_DB_NAME=$WORDPRESS_DB_NAME"
+              ],
+              "volumes": [
+                "$WORDPRESS_DATA:/var/www/html"
+              ],
+              "depends_on": [
+                "db"
+              ]
+            },
+            "db": {
+              "image": "mariadb:latest",
+              "container_name": "Wordpress_DataBase",
+              "restart": "always",
+              "environment": [
+                "MYSQL_DATABASE=$WORDPRESS_DB_NAME",
+                "MYSQL_USER=$WORDPRESS_DB_USER",
+                "MYSQL_PASSWORD=$WORDPRESS_DB_PASSWORD",
+                "MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD"
+              ],
+              "volumes": [
+                "$DB_DATA:/var/lib/mysql"
+              ]
+            }
+          }
+        }
+      }
+    ]
+  }
+  
