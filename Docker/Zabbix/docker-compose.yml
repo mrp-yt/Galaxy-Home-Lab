@@ -51,17 +51,17 @@ services:
     networks:
       - zabbix-network
 
-  zabbix-agent:
-    container_name: Zabbix-Agent
-    image: zabbix/zabbix-agent:latest
-    environment:
-      ZBX_SERVER_HOST: zabbix-server
-    volumes:
-      - /home/mrp/docker/zabbix/zabbix_agentd.conf:/etc/zabbix/zabbix_agentd.conf
-    depends_on:
-      - zabbix-server
-    networks:
-      - zabbix-network
+#  zabbix-agent:
+#    container_name: Zabbix-Agent
+#    image: zabbix/zabbix-agent:latest
+#    environment:
+#      ZBX_SERVER_HOST: zabbix-server
+#    volumes:
+#      - /home/mrp/docker/zabbix/zabbix_agentd.conf:/etc/zabbix/zabbix_agentd.conf
+#    depends_on:
+#      - zabbix-server
+#   networks:
+#      - zabbix-network
 
 networks:
   zabbix-network:
