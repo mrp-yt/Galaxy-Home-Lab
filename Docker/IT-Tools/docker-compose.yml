@@ -3,11 +3,7 @@ services:
   it-tools:
     image: corentinth/it-tools:latest
     ports:
-      - 8085:80
+      - $HOST_PORT:80
     restart: always
     container_name: IT-Tools
-#    networks:
-#      - galaxy
-#networks:
-#  galaxy:  # Updated to correct network name
-#    driver: bridge
+

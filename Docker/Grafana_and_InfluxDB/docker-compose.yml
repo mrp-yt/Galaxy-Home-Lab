@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  grafana:
+    image: grafana/grafana:latest
+    container_name: Grafana
+    ports:
+      - ${GRAFANA_PORT}:3000
+    volumes:
+      - ${GRAFANA_VOLUME}:/var/lib/grafana 
+    user: "${GRAFANA_USER}:${GRAFANA_GROUP}"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GF_SECURITY_ADMIN_PASSWORD}
+    networks:
+      - monitoring_net
+
+  influxdb:
+    image: influxdb
+    container_name: InfluxDB
+    ports:
+      - ${INFLUXDB_PORT}:8086
+    volumes:
+      - ${INFLUXDB_DATA_VOLUME}:/var/lib/influxdb2
+      - ${INFLUXDB_CONFIG_VOLUME}:/etc/influxdb2
+    restart: always
+    networks:
+      - monitoring_net
+
+networks:
+  monitoring_net:
+    driver: bridge
