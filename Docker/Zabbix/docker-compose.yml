@@ -2,7 +2,7 @@ version: '3.5'
 
 services:
   zabbix-db:
-    container_name: Zabbix-DB
+    container_name: zabbix-DB
     image: mysql:8.0
     environment:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -16,7 +16,7 @@ services:
       - zabbix-network
 
   zabbix-server:
-    container_name: Zabbix-Server
+    container_name: zabbix-Server
     image: zabbix/zabbix-server-mysql:latest
     environment:
       DB_SERVER_HOST: zabbix-db
@@ -34,7 +34,7 @@ services:
       - zabbix-network
 
   zabbix-web:
-    container_name: Zabbix-WEB
+    container_name: zabbix-WEB
     image: zabbix/zabbix-web-nginx-mysql:latest
     environment:
       ZBX_SERVER_HOST: zabbix-server
@@ -51,17 +51,17 @@ services:
     networks:
       - zabbix-network
 
-#  zabbix-agent:
-#    container_name: Zabbix-Agent
-#    image: zabbix/zabbix-agent:latest
-#    environment:
-#      ZBX_SERVER_HOST: zabbix-server
+  zabbix-agent:
+    container_name: Zabbix-Agent
+    image: zabbix/zabbix-agent:latest
+    environment:
+      ZBX_SERVER_HOST: zabbix-server
 #    volumes:
 #      - /home/mrp/docker/zabbix/zabbix_agentd.conf:/etc/zabbix/zabbix_agentd.conf
-#    depends_on:
-#      - zabbix-server
-#   networks:
-#      - zabbix-network
+    depends_on:
+      - zabbix-server
+   networks:
+      - zabbix-network
 
 networks:
   zabbix-network:
