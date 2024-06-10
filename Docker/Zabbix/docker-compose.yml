@@ -17,7 +17,7 @@ services:
 
   zabbix-server:
     container_name: zabbix-server
-    hostname: zabbix-server
+#    hostname: zabbix-server
     image: zabbix/zabbix-server-mysql:latest
     environment:
       DB_SERVER_HOST: zabbix-db
@@ -54,12 +54,10 @@ services:
 
   zabbix-agent:
     container_name: zabbix-agent
-    hostname: zabbix-agent
+#    hostname: zabbix-agent
     image: zabbix/zabbix-agent:latest
-#    environment:
-#      ZBX_SERVER_HOST: zabbix-server
-#    volumes:
-#      - /home/mrp/docker/zabbix/zabbix_agentd.conf:/etc/zabbix/zabbix_agentd.conf
+    environment:
+      ZBX_SERVER_HOST: zabbix-server
     depends_on:
       - zabbix-server
     networks:
