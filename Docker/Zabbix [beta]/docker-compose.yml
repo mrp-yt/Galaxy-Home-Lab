@@ -1,52 +1,61 @@
-# Still working on this 
-version: '3.8'
+version: '3.5'
 
 services:
-  mysql-server:
-    image: mysql:latest
-    container_name: Zabbix-DB
+  zabbix-db:
+    image: mysql:8.0
     environment:
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-      - MYSQL_DATABASE=${MYSQL_DATABASE}
-      - MYSQL_USER=${MYSQL_USER}
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     volumes:
       - ${DB_DATA}:/var/lib/mysql
-    restart: unless-stopped
     networks:
-      - galaxy
+      - zabbix-network
 
   zabbix-server:
     image: zabbix/zabbix-server-mysql:latest
-    container_name: Zabbix-Server
     environment:
-      - DB_SERVER_HOST=mysql-server
-      - MYSQL_USER=${MYSQL_USER}
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+      DB_SERVER_HOST: zabbix-db
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     depends_on:
-      - mysql-server
-    init: true
-    restart: unless-stopped
+      - zabbix-db
+    ports:
+      - "10051:10051"
+    volumes:
+      - zabbix-server-data:/var/lib/zabbix
     networks:
-      - galaxy
+      - zabbix-network
 
   zabbix-web:
     image: zabbix/zabbix-web-nginx-mysql:latest
-    container_name: Zabbix-Web
     environment:
-      - DB_SERVER_HOST=mysql-server
-      - MYSQL_USER=${MYSQL_USER}
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
-      - ZBX_SERVER_HOST=zabbix-server
-      - PHP_TZ=UTC
+      ZBX_SERVER_HOST: zabbix-server
+      DB_SERVER_HOST: zabbix-db
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     ports:
-      - "$HOST_PORT:8080"
+      - "${HOST_PORT}:8080"
     depends_on:
       - zabbix-server
-    restart: unless-stopped
+      - zabbix-db
     networks:
-      - galaxy
+      - zabbix-network
+
+  zabbix-agent:
+    image: zabbix/zabbix-agent:latest
+    environment:
+      ZBX_SERVER_HOST: zabbix-server
+    depends_on:
+      - zabbix-server
+    networks:
+      - zabbix-network
 
 networks:
-  galaxy:
+  zabbix-network:
     driver: bridge
