@@ -16,7 +16,8 @@ services:
       - zabbix-network
 
   zabbix-server:
-    container_name: zabbix-Server
+    container_name: zabbix-server
+    hostname: zabbix-server
     image: zabbix/zabbix-server-mysql:latest
     environment:
       DB_SERVER_HOST: zabbix-db

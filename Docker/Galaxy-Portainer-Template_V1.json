@@ -18,13 +18,13 @@
 					"set": "1000"
 				}
 			],
-			"image": "/it-tools:latest",
+			"image": "corentinth/it-tools:latest",
 			"logo": "https://raw.githubusercontent.com/thesugarat/portainer_templates-1/master/Images/htpcmanager-icon.png",
 			"platform": "linux",
 			"ports": [
 				"8085/tcp"
 			],
-			"title": "it-tools",
+			"title": "IT-Tools",
 			"type": 1
 		}
 	]
