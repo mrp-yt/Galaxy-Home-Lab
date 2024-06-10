@@ -1,127 +1,31 @@
 {
-    "version": "2",
-    "templates": [
-      {
-        "type": "stack",
-        "title": "Galaxy Home Lab - Complete Stack",
-        "description": "A collection of various Docker services for the Galaxy Home Lab.",
-        "categories": ["Home Lab"],
-        "platform": "linux",
-        "logo": "https://raw.githubusercontent.com/mrp-yt/Galaxy-Home-Lab/main/logo.png",
-        "repository": {
-          "url": "https://github.com/mrp-yt/Galaxy-Home-Lab.git",
-          "stackfile": "Docker/docker-compose.yml"
-        },
-        "env": [
-          {
-            "name": "GF_SECURITY_ADMIN_PASSWORD",
-            "label": "Grafana Admin Password",
-            "description": "Password for the Grafana admin user",
-            "default": "admin"
-          },
-          {
-            "name": "GRAFANA_USER",
-            "label": "Grafana User ID",
-            "description": "User ID for Grafana container",
-            "default": "1000"
-          },
-          {
-            "name": "GRAFANA_GROUP",
-            "label": "Grafana Group ID",
-            "description": "Group ID for Grafana container",
-            "default": "1000"
-          },
-          {
-            "name": "GRAFANA_VOLUME",
-            "label": "Grafana Volume",
-            "description": "Host volume for Grafana data",
-            "default": "/home/mrp/docker/monitoring/grafana"
-          },
-          {
-            "name": "GRAFANA_PORT",
-            "label": "Grafana Port",
-            "description": "Port for accessing Grafana",
-            "default": "3000"
-          },
-          {
-            "name": "INFLUXDB_DATA_VOLUME",
-            "label": "InfluxDB Data Volume",
-            "description": "Host volume for InfluxDB data",
-            "default": "/home/mrp/docker/monitoring/influxdb/data"
-          },
-          {
-            "name": "INFLUXDB_CONFIG_VOLUME",
-            "label": "InfluxDB Config Volume",
-            "description": "Host volume for InfluxDB config",
-            "default": "/home/mrp/docker/monitoring/influxdb/config"
-          },
-          {
-            "name": "INFLUXDB_PORT",
-            "label": "InfluxDB Port",
-            "description": "Port for accessing InfluxDB",
-            "default": "8086"
-          },
-          {
-            "name": "FILEZILLA_PORT",
-            "label": "FileZilla Port",
-            "description": "Port for accessing FileZilla",
-            "default": "21"
-          },
-          {
-            "name": "GOTIFY_PORT",
-            "label": "Gotify Port",
-            "description": "Port for accessing Gotify",
-            "default": "80"
-          },
-          {
-            "name": "PINGVIN_SHARE_PORT",
-            "label": "Pingvin Share Port",
-            "description": "Port for accessing Pingvin Share",
-            "default": "3000"
-          },
-          {
-            "name": "PLEX_MEDIA_SERVER_PORT",
-            "label": "Plex Media Server Port",
-            "description": "Port for accessing Plex Media Server",
-            "default": "32400"
-          },
-          {
-            "name": "PRUSA_SLICER_PORT",
-            "label": "Prusa Slicer Port",
-            "description": "Port for accessing Prusa Slicer",
-            "default": "80"
-          },
-          {
-            "name": "REMMINA_PORT",
-            "label": "Remmina Port",
-            "description": "Port for accessing Remmina",
-            "default": "3389"
-          },
-          {
-            "name": "SYNCTHING_PORT",
-            "label": "Syncthing Port",
-            "description": "Port for accessing Syncthing",
-            "default": "8384"
-          },
-          {
-            "name": "UPTIME_KUMA_PORT",
-            "label": "Uptime Kuma Port",
-            "description": "Port for accessing Uptime Kuma",
-            "default": "3001"
-          },
-          {
-            "name": "WATCH_TOWER_PORT",
-            "label": "Watch Tower Port",
-            "description": "Port for accessing Watch Tower",
-            "default": "8080"
-          },
-          {
-            "name": "WORDPRESS_PORT",
-            "label": "WordPress Port",
-            "description": "Port for accessing WordPress",
-            "default": "80"
-          }
-        ]
-      }
-    ]
-  }
+	"version": "2",
+	"templates": [
+		{
+			"category": [
+				"Tools"
+			],
+			"description": "IT-Tools",
+			"env": [
+				{
+					"label": "PGID",
+					"name": "PGID",
+					"set": "1000"
+				},
+				{
+					"label": "PUID",
+					"name": "PUID",
+					"set": "1000"
+				},
+			],
+			"image": "/it-tools:latest",
+			"logo": "https://raw.githubusercontent.com/thesugarat/portainer_templates-1/master/Images/htpcmanager-icon.png",
+			"platform": "linux",
+			"ports": [
+				"8085/tcp"
+			],
+			"title": "it-tools",
+			"type": 1
+		}
+	]
+}
