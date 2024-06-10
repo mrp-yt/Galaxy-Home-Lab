@@ -72,7 +72,7 @@
             "bind": "/some/folder/name2"
           }
         ],
-        "restart_policy": "unless-stopped",
+        "restart_policy": "unless-stopped"
         
       }
     ]
