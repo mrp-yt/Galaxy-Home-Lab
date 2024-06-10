@@ -5,7 +5,7 @@
 			"category": [
 				"Tools"
 			],
-			"description": "IT-Tools",
+			"description": "IT-Tools - Useful tools for developer and people working in IT.",
 			"env": [
 				{
 					"label": "PGID",
