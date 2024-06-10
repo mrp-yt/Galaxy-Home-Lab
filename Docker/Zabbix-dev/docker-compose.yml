@@ -26,7 +26,7 @@ services:
     ports:
       - "10051:10051"
     volumes:
-      - zabbix-server-data:/var/lib/zabbix
+      - $ZABBIX_SERVER_DATA:/var/lib/zabbix
     networks:
       - zabbix-network
 
