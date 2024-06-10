@@ -2,6 +2,7 @@ version: '3.5'
 
 services:
   zabbix-db:
+    container_name: Zabbix-DB
     image: mysql:8.0
     environment:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -15,6 +16,7 @@ services:
       - zabbix-network
 
   zabbix-server:
+    container_name: Zabbix-Server
     image: zabbix/zabbix-server-mysql:latest
     environment:
       DB_SERVER_HOST: zabbix-db
@@ -32,6 +34,7 @@ services:
       - zabbix-network
 
   zabbix-web:
+    container_name: Zabbix-WEB
     image: zabbix/zabbix-web-nginx-mysql:latest
     environment:
       ZBX_SERVER_HOST: zabbix-server
@@ -49,6 +52,7 @@ services:
       - zabbix-network
 
   zabbix-agent:
+    container_name: Zabbix-Agent
     image: zabbix/zabbix-agent:latest
     environment:
       ZBX_SERVER_HOST: zabbix-server
