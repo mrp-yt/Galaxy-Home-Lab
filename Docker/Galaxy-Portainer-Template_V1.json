@@ -19,7 +19,7 @@
           }
         ],
         "image": "corentinth/it-tools:latest",
-        "logo": "https://raw.githubusercontent.com/thesugarat/portainer_templates-1/master/Images/htpcmanager-icon.png",
+        "logo": "https://www.vhv.rs/dpng/d/574-5747321_docker-ref-icon-docker-django-hd-png-download.png",
         "platform": "linux",
         "ports": [
           "8085/tcp"
