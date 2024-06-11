@@ -4,7 +4,6 @@ services:
   zabbix-db:
     container_name: zabbix-db
     image: mysql:8.0
-    user: $PUID:$PGID
     environment:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
@@ -18,9 +17,7 @@ services:
 
   zabbix-server:
     container_name: zabbix-server
-#    hostname: zabbix-server
     image: zabbix/zabbix-server-mysql:latest
-    user: $PUID:$PGID
     environment:
       DB_SERVER_HOST: zabbix-db
       MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -39,7 +36,6 @@ services:
   zabbix-web:
     container_name: zabbix-web
     image: zabbix/zabbix-web-nginx-mysql:latest
-    user: $PUID:$PGID
     environment:
       ZBX_SERVER_HOST: zabbix-server
       DB_SERVER_HOST: zabbix-db
@@ -57,9 +53,7 @@ services:
 
   zabbix-agent:
     container_name: zabbix-agent
-#    hostname: zabbix-agent
     image: zabbix/zabbix-agent:latest
-    user: $PUID:$PGID
     environment:
       ZBX_SERVER_HOST: zabbix-server
     depends_on:
