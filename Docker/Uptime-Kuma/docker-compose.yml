@@ -3,7 +3,10 @@ services:
   uptime-kuma:
     image: louislam/uptime-kuma
     volumes:
-      - $UPTIME_KUMA_DATA:/app/data
+      - uptime_kuma_data:/app/data
     ports:
       - $UPTIME_KUMA_HOST_PORT:3001
     restart: unless-stopped
+
+volumes:
+  uptime_kuma_data:
