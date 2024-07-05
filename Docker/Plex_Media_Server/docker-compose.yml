@@ -10,6 +10,7 @@ services:
       - PGID=$PGID
       - TZ=$TZ
       - VERSION=docker
+    privileged: true
     volumes:
       - $CONFIG:/config
       - $LOCAL_DATA:$CONTAINER_DATA
