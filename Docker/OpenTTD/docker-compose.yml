@@ -1,0 +1,13 @@
+services:
+    openttd:
+        container_name: openttd
+        image: redditopenttd/openttd
+        user: 0:0
+        ports:
+            - 3979:3979/tcp
+            - 3979:3979/udp
+        restart: unless-stopped
+        volumes:
+            - /home/mrp/docker/openttd:/config
+        environment:
+            - loadgame=false
