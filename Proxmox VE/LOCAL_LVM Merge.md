@@ -5,4 +5,6 @@ More info
 https://youtu.be/5ybXCED83ww?si=pWsyFhD4-AFBO5DG&t=485
 
 **Command:**
+```bash
 lvremove /dev/pve/data -y && lvresize -l +100%FREE /dev/pve/root && resize2fs /dev/mapper/pve-root
+```
