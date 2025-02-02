@@ -1,0 +1,31 @@
+services:
+  kdenlive:
+    image: lscr.io/linuxserver/kdenlive:latest
+    container_name: Kdenlive
+    security_opt:
+      - seccomp:unconfined #optional
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+#      - SUBFOLDER=/ #optional
+    volumes:
+      - /home/mrp/docker/kdenlive:/config
+      - /home/mrp/Synology/mrp:/NAS
+    ports:
+      - 3636:3000
+      - 3551:3001
+#    devices:
+#      - /dev/dri:/dev/dri #optional
+    shm_size: "1gb" #optional
+    restart: unless-stopped
+#     networks:
+#       kdenlive_net:
+#         ipv4_address: 192.111.10.12
+
+# networks:
+#   kdenlive_net:
+#     driver: bridge
+#     ipam:
+#       config:
+#         - subnet: 192.111.10.0/24
