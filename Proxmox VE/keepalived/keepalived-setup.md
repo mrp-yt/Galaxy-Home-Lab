@@ -1,0 +1,65 @@
+keepalived setup for Galaxy Cluster
+
+Install
+```
+apt update && apt install -y keepalived
+```
+
+Edit file (on each node)
+```
+nano /etc/keepalived/keepalived.conf
+```
+
+Master
+```
+vrrp_instance VI_1 {
+    state MASTER
+    interface vmbr0  # Change this if using a different network interface
+    virtual_router_id 51
+    priority 200
+    advert_int 1
+    authentication {
+        auth_type PASS
+        auth_pass mysecurepassword
+    }
+    virtual_ipaddress {
+        192.168.178.222/24
+    }
+}
+```
+
+Backup_1
+```
+vrrp_instance VI_1 {
+    state BACKUP
+    interface vmbr0
+    virtual_router_id 51
+    priority 150
+    advert_int 1
+    authentication {
+        auth_type PASS
+        auth_pass mysecurepassword
+    }
+    virtual_ipaddress {
+        192.168.178.222/24
+    }
+}
+```
+
+Backup_2
+```
+vrrp_instance VI_1 {
+    state BACKUP
+    interface vmbr0
+    virtual_router_id 51
+    priority 100
+    advert_int 1
+    authentication {
+        auth_type PASS
+        auth_pass mysecurepassword
+    }
+    virtual_ipaddress {
+        192.168.178.222/24
+    }
+}
+```
