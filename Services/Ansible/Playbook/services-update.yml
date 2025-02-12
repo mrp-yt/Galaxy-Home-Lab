@@ -1,0 +1,11 @@
+- name: Update and Upgrade Proxmox
+  hosts: poe
+  become: yes  # Run as root
+  tasks:
+    - name: Update package list
+      apt:
+        update_cache: yes
+
+    - name: Upgrade all packages
+      apt:
+        upgrade: dist
