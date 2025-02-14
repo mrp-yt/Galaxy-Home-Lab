@@ -63,3 +63,9 @@ vrrp_instance VI_1 {
     }
 }
 ```
+
+Restart keepalived service and enable it to auto-start after ndoe restart.
+```
+systemctl restart keepalived
+systemctl enable keepalived
+```
