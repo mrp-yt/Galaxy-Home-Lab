@@ -1,3 +1,6 @@
+#docker #compose 
+
+```yaml
 version: '3.9'  
 services:
   filezilla:
@@ -23,3 +26,5 @@ networks:
   galaxy:  
     driver: bridge
     
+
+```

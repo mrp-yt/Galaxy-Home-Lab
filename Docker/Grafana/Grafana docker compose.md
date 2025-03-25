@@ -1,3 +1,6 @@
+Docker compose file
+
+```yaml
 version: '3.8'
 services:
   grafana:
@@ -10,3 +13,4 @@ services:
     user: "1000:1000"
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=admin
+```

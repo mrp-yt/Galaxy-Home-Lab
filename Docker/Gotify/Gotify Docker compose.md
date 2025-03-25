@@ -1,3 +1,6 @@
+#docker #compose 
+
+```yaml
 version: "3"
 services:
   server:
@@ -16,3 +19,4 @@ networks:
   galaxy:  
     driver: bridge
     # optional --------------------------
+```
