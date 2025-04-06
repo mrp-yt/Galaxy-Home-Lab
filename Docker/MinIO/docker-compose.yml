@@ -1,0 +1,14 @@
+services:
+  minio:
+    image: minio/minio
+    container_name: minio
+    restart: unless-stopped
+    ports:
+      - "9000:9000"  # MinIO API Port
+      - "9090:9090"  # MinIO Console Port
+    environment:
+      MINIO_ROOT_USER: "admin"
+      MINIO_ROOT_PASSWORD: "mysecretpassword"
+    volumes:
+      - <PATH_TO_DATA>:/data
+    command: server --console-address ":9090" /data
