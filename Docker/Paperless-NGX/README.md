@@ -1,6 +1,6 @@
 # Paperless NGX services
- >> Docker compose file [link](https://github.com/mrp-yt/Galaxy-Home-Lab/blob/main/Docker/Paperless-NGX/docker-compose.yml)
-
+#### Docker compose file [link](https://github.com/mrp-yt/Galaxy-Home-Lab/blob/main/Docker/Paperless-NGX/docker-compose.yml)
+---
 ### 🧠 `broker` (Redis)
 
 - **Image**: `redis:7.4.2`
