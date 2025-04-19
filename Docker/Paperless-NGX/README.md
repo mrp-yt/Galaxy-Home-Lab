@@ -10,10 +10,7 @@ Docker compose file [link](https://github.com/mrp-yt/Galaxy-Home-Lab/blob/main/D
 - **Why**: Helps offload tasks from the webserver to run asynchronously.
     
 - 🔗 [https://redis.io/](https://redis.io/)
-    
-
 ---
-
 ### 🗃️ `db` (PostgreSQL)
 
 - **Image**: `postgres:16`
@@ -23,10 +20,7 @@ Docker compose file [link](https://github.com/mrp-yt/Galaxy-Home-Lab/blob/main/D
 - **Why**: Central database for everything Paperless tracks.
     
 - 🔗 [https://www.postgresql.org/](https://www.postgresql.org/)
-    
-
 ---
-
 ### 🌐 `webserver` (Paperless-ngx)
 
 - **Image**: `paperless-ngx:latest`
@@ -38,10 +32,7 @@ Docker compose file [link](https://github.com/mrp-yt/Galaxy-Home-Lab/blob/main/D
 - **Exposes port**: `8000` to access the web UI.
     
 - 🔗 [https://github.com/paperless-ngx/paperless-ngx](https://github.com/paperless-ngx/paperless-ngx)
-    
-
 ---
-
 ### 🔄 `gotenberg`
 
 - **Image**: `gotenberg:8.17`
@@ -50,13 +41,8 @@ Docker compose file [link](https://github.com/mrp-yt/Galaxy-Home-Lab/blob/main/D
     
 - **Why**: Paperless only works with PDFs.
     
-- **Notes**: JavaScript disabled for security.
-    
 - 🔗 [https://gotenberg.dev/](https://gotenberg.dev/)
-    
-
 ---
-
 ### 📄 `tika`
 
 - **Image**: `paperless-ngx/tika`
@@ -66,7 +52,6 @@ Docker compose file [link](https://github.com/mrp-yt/Galaxy-Home-Lab/blob/main/D
 - **Why**: Enables document search by reading file content.
     
 - 🔗 [https://tika.apache.org/](https://tika.apache.org/)
-
 ---
 ### 🐞 `DEBUG: true` in `webserver`
 
