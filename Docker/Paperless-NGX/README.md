@@ -67,3 +67,90 @@
         
 
 🔗 [https://paperless-ngx.readthedocs.io/en/latest/configuration.html#debug](https://paperless-ngx.readthedocs.io/en/latest/configuration.html#debug)
+
+---
+
+# Paperless-NGX Dashboard Menu options
+
+🏠 Dashboard
+Function: Displays a customizable overview with saved views and document statistics.
+
+Features: Allows adding saved views for quick access to frequently used filters. ​
+Paperless NGX Docs
++4
+GitHub
++4
+GitHub
++4
+
+📄 Documents
+Function: Main interface to view and manage all documents.
+
+Features: Supports searching, filtering, sorting, and bulk editing.​
+
+📥 Inbox
+Function: Shows unprocessed documents awaiting classification.
+
+Features: Allows manual processing and assignment of metadata.​
+
+🏷️ Tags
+Function: Manage labels to categorize documents.
+
+Features: Create, edit, delete, and assign tags to documents.​
+
+👤 Correspondents
+Function: Manage entities (people or organizations) associated with documents.
+
+Features: Helps in organizing documents by sender or related party.​
+
+📂 Document Types
+Function: Define and manage categories like invoices, receipts, etc.
+
+Features: Facilitates automatic classification and filtering.​
+
+📁 Storage Paths
+Function: Manage physical storage locations for documents.
+
+Features: Configure where documents are stored on disk.​
+
+🧩 Workflows
+Function: Automate actions based on document metadata.
+
+Features: Set up rules to perform tasks like tagging or moving documents automatically.​
+
+📧 Mail Accounts
+Function: Configure email accounts for importing documents.
+
+Features: Automatically fetch and process email attachments.​
+freebsdfoundation.org
+
+📜 Mail Rules
+Function: Define rules for processing incoming emails.
+
+Features: Set conditions to filter and handle emails appropriately.​
+
+💾 Saved Views
+Function: Create and manage custom filtered views of documents.
+
+Features: Quick access to frequently used document filters.​
+
+⚙️ Settings
+Function: Configure system-wide settings.
+
+Features: Adjust OCR settings, user preferences, and other configurations.​
+paperless-ngx.readthedocs.io
++4
+Paperless NGX Docs
++4
+Paperless NGX Docs
++4
+
+👥 Users
+Function: Manage user accounts and permissions.
+
+Features: Add, edit, or remove users and assign roles.​
+
+🔍 Search Bar
+Function: Perform quick searches across all documents.
+
+Features: Supports advanced search queries using specific syntax.
