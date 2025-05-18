@@ -1,4 +1,5 @@
-version: "3.3"
+# Version statement required if you are using Docker-Compose V1.*
+# version: "3.3"
 services:
   watchtower:
     image: containrrr/watchtower
