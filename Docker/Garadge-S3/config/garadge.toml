@@ -1,0 +1,23 @@
+metadata_dir = "/var/lib/garage/meta"
+data_dir = "/var/lib/garage/data"
+
+# Important: Set to 1 for single-node setups. (Default is 3, which will fail with 1 node)
+replication_factor = 1
+
+# Internal RPC for local Garage processes only
+rpc_bind_addr = "[::]:3901"
+
+# Generate your own RPC Secret.
+rpc_secret = "2cxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+[s3_api]
+s3_region = "garage"
+api_bind_addr = "[::]:3900"
+root_domain = "[.s3.example.com]" # Update to your local domain, or leave as-is if using path-style requests
+
+[s3_web]
+bind_addr = "[::]:3902"
+root_domain = "[.web.example.com]" # Optional, if using Garage for web hosting
+
+[admin]
+api_bind_addr = "[::]:3903"
