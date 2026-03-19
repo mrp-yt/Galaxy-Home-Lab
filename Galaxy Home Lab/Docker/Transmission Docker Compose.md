@@ -1,0 +1,23 @@
+---
+created: 2026-03-19T21:39
+updated: 2026-03-19T21:39
+---
+```yaml
+services:
+  transmission:
+    image: lscr.io/linuxserver/transmission:latest
+    container_name: transmission
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - ./config:/config
+      - /home/mrp/nas/pms:/downloads
+#      - /home/mrp/nas/pms/watch:/watch
+    ports:
+      - 9091:9091
+      - 51413:51413
+      - 51413:51413/udp
+    restart: unless-stopped
+```
