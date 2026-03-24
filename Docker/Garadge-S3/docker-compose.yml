@@ -5,9 +5,6 @@ services:
     restart: unless-stopped
     ports:
       - "3900:3900"   # S3 API port
-      # - "3902:3902" # Uncomment if using S3 Web-hosting
-      # Ports 3901 (RPC) and 3903 (Admin API) are intentionally NOT exposed to the host machine
-      # because this is a single-node setup and we will use 'docker exec' for admin commands.
     volumes:
       - ./meta:/var/lib/garage/meta
       - ./data:/var/lib/garage/data
